@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const App = () =>  {
   const initialStates = {
@@ -8,6 +8,14 @@ const App = () =>  {
 
   const [state, setState] = useState(initialStates)
   const {name, price} = state
+
+  useEffect(() => {
+    console.log('useEffect is invoked.')
+  })
+
+  useEffect(() => {
+    console.log('name updated!')
+  }, [name])
 
   return (
     <div>
