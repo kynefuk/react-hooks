@@ -3,6 +3,7 @@ import React, { useState, useReducer } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import reducer from '../reducers';
+import Event from './Event';
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, []);
@@ -17,6 +18,14 @@ const App = () => {
       body,
     });
   };
+
+  const handleClickDelete = (id) => {
+    dispatch({
+      type: 'DELETE_EVENT',
+      id,
+    });
+  };
+
   return (
     <div className='container-fluid'>
       <h4>イベント作成フォーム</h4>
@@ -57,12 +66,12 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope='row'>1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
+          {state.map((event, index) => (
+            <Event
+              key={index}
+              event={event}
+              handleClickDelete={handleClickDelete}></Event>
+          ))}
         </tbody>
       </table>
     </div>
