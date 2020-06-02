@@ -1,0 +1,7 @@
+const Action = {
+  CREATE_EVENT: 'CREATE_EVENT',
+  DELETE_EVENT: 'DELETE_EVENT',
+  DELETE_ALL_EVENTS: 'DELETE_ALL_EVENTS',
+};
+
+export default Action;
