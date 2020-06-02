@@ -20,11 +20,30 @@ const App = () => {
   };
 
   const handleClickDelete = (id) => {
-    dispatch({
-      type: 'DELETE_EVENT',
-      id,
-    });
+    const result = window.confirm(
+      `このイベント(id: ${id})を削除して良いですか？`
+    );
+    if (result) {
+      dispatch({
+        type: 'DELETE_EVENT',
+        id,
+      });
+    }
   };
+
+  const deleteAllEvents = (e) => {
+    e.preventDefault();
+    const result = window.confirm('全削除してよいですか?');
+    if (result) {
+      dispatch({
+        type: 'DELETE_ALL_EVENT',
+      });
+    }
+  };
+
+  const unCreatable = title === '' || body === '';
+
+  const unDeletable = state.length === 0;
 
   return (
     <div className='container-fluid'>
@@ -48,10 +67,18 @@ const App = () => {
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
-        <button className='btn btn-primary' onClick={addEvent}>
+        <button
+          className='btn btn-primary'
+          onClick={addEvent}
+          disabled={unCreatable}>
           イベント作成
         </button>
-        <button className='btn btn-danger'>イベント全削除</button>
+        <button
+          className='btn btn-danger'
+          onClick={deleteAllEvents}
+          disabled={unDeletable}>
+          イベント全削除
+        </button>
       </form>
 
       <h4>イベント一覧</h4>
