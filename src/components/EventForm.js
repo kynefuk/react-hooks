@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
+import AppContext from '../contexts/AppContext';
 import Action from '../actions';
 
-const EventForm = ({ state, dispatch }) => {
+const EventForm = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const { events, dispatch } = useContext(AppContext);
 
   const addEvent = (e) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const EventForm = ({ state, dispatch }) => {
 
   const unCreatable = title === '' || body === '';
 
-  const unDeletable = state.length === 0;
+  const unDeletable = events.length === 0;
 
   return (
     <>
