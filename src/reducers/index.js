@@ -1,6 +1,6 @@
 import Action from '../actions';
 
-const events = (state = [], action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
     case Action.CREATE_EVENT:
       const event = { title: action.title, body: action.body };
@@ -18,4 +18,4 @@ const events = (state = [], action) => {
   }
 };
 
-export default events;
+export default reducer;
