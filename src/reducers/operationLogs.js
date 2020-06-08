@@ -10,11 +10,7 @@ export const operationLogs = (state = [], action) => {
       }
       return [operationLog, ...state];
     case OperationLogsAction.DELETE_ALL_OPERATION_LOGS:
-      const operationLogs = {
-        description: action.description,
-        operatedAt: action.operatedAt
-      };
-      return [operationLogs, ...state];
+      return [];
     default:
       return state;
   }
