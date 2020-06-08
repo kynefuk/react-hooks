@@ -5,7 +5,7 @@ import Action from '../actions';
 const EventForm = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const { events, dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
 
   const addEvent = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const EventForm = () => {
 
   const unCreatable = title === '' || body === '';
 
-  const unDeletable = events.length === 0;
+  const unDeletable = state.events.length === 0;
 
   return (
     <>
@@ -61,7 +61,8 @@ const EventForm = () => {
         <button
           className='btn btn-danger'
           onClick={deleteAllEvents}
-          disabled={unDeletable}>
+          disabled={unDeletable}
+          >
           イベント全削除
         </button>
       </form>
