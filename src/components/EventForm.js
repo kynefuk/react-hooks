@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import AppContext from '../contexts/AppContext';
-import Action from '../actions';
+import {EventAction} from '../actions';
 
 const EventForm = () => {
   const [title, setTitle] = useState('');
@@ -10,7 +10,7 @@ const EventForm = () => {
   const addEvent = (e) => {
     e.preventDefault();
     dispatch({
-      type: Action.CREATE_EVENT,
+      type: EventAction.CREATE_EVENT,
       title,
       body,
     });
@@ -21,7 +21,7 @@ const EventForm = () => {
     const result = window.confirm('全削除してよいですか?');
     if (result) {
       dispatch({
-        type: Action.DELETE_ALL_EVENTS,
+        type: EventAction.DELETE_ALL_EVENTS,
       });
     }
   };

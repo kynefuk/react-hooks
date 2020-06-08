@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-import Action from '../actions';
+import {EventAction} from '../actions';
 
 const Event = ({ event }) => {
   const { dispatch } = useContext(AppContext);
@@ -10,7 +10,7 @@ const Event = ({ event }) => {
     );
     if (result) {
       dispatch({
-        type: Action.DELETE_EVENT,
+        type: EventAction.DELETE_EVENT,
         id,
       });
     }
